@@ -1,9 +1,9 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 
+// Redirect to the home page
 const Index = () => {
-  // Redirect to the home page
   return <Navigate to="/" />;
 };
 
