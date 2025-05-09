@@ -41,6 +41,39 @@
     --cursor-color-hover: 210 100% 50%;
   }
 
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --cursor-color: 255 255 255;
+    --cursor-color-hover: 56 182 255;
+  }
+
   * {
     @apply border-border;
     box-sizing: border-box;
@@ -48,7 +81,7 @@
   }
 
   body {
-    @apply bg-light text-dark font-sans m-0 p-0 overflow-x-hidden;
+    @apply bg-light dark:bg-dark text-dark dark:text-light font-sans m-0 p-0 overflow-x-hidden transition-colors duration-300;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
 
@@ -67,7 +100,7 @@
 
 @layer components {
   .custom-cursor {
-    @apply fixed pointer-events-none w-8 h-8 rounded-full bg-dark bg-opacity-20 mix-blend-difference z-50 opacity-0;
+    @apply fixed pointer-events-none w-8 h-8 rounded-full bg-dark dark:bg-light bg-opacity-20 dark:bg-opacity-20 mix-blend-difference z-50 opacity-0;
     transform: translate(-50%, -50%);
     transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
   }
@@ -77,11 +110,11 @@
   }
 
   .custom-cursor-active {
-    @apply w-24 h-24 bg-opacity-10;
+    @apply w-24 h-24 bg-opacity-10 dark:bg-opacity-10;
   }
 
   .cursor-follower {
-    @apply fixed pointer-events-none w-16 h-16 rounded-full border border-dark border-opacity-20 z-40 opacity-0;
+    @apply fixed pointer-events-none w-16 h-16 rounded-full border border-dark dark:border-light border-opacity-20 dark:border-opacity-20 z-40 opacity-0;
     transform: translate(-50%, -50%);
     transition: transform 0.15s ease-out, width 0.3s ease, height 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
   }
@@ -92,7 +125,7 @@
   }
 
   .cursor-follower-active {
-    @apply w-32 h-32 border-opacity-10;
+    @apply w-32 h-32 border-opacity-10 dark:border-opacity-10;
   }
 
   .cursor-follower.hovering, .custom-cursor.hovering {
@@ -100,7 +133,7 @@
   }
 
   .header-link {
-    @apply inline-block relative text-dark transition-all duration-300 hover:opacity-50;
+    @apply inline-block relative text-dark dark:text-light transition-all duration-300 hover:opacity-50;
   }
 
   .hover-project {
@@ -125,6 +158,10 @@
     white-space: nowrap;
     will-change: transform;
     transition: transform 0.05s linear; /* Slower transition for smoother movement */
+  }
+  
+  .dark .model-bg {
+    @apply opacity-10;
   }
 }
 
@@ -233,7 +270,7 @@
   z-index: -1;
   opacity: 0.05;
   will-change: transform;
-  transition: transform 0.5s ease-out; /* Slower transition for smoother movement */
+  transition: transform 0.5s ease-out, opacity 0.5s ease; /* Slower transition for smoother movement */
 }
 
 .model-bg img {
@@ -270,5 +307,51 @@ html.smooth-scroll {
   .section-spacing {
     padding-top: 4rem;
     padding-bottom: 4rem;
+  }
+}
+
+/* Dark mode specific styles */
+.dark {
+  @apply bg-dark text-light;
+}
+
+.dark .bg-light {
+  @apply bg-dark;
+}
+
+.dark .text-dark {
+  @apply text-light;
+}
+
+.dark .text-gray-600 {
+  @apply text-gray-300;
+}
+
+.dark .bg-accent {
+  @apply bg-gray-800;
+}
+
+/* Mouse scroll animation */
+.scroll-down {
+  @apply absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center;
+}
+
+.scroll-down .mouse {
+  @apply w-8 h-12 border-2 border-gray-500 dark:border-gray-400 rounded-full flex justify-center;
+}
+
+.scroll-down .wheel {
+  @apply w-1 h-3 bg-gray-500 dark:bg-gray-400 rounded-full mt-2;
+  animation: scroll-wheel 1.5s infinite;
+}
+
+@keyframes scroll-wheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
   }
 }

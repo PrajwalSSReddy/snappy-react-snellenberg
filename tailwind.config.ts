@@ -91,6 +91,10 @@ export default {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' },
 				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -99,6 +103,7 @@ export default {
 				fadeIn: 'fadeIn 0.6s ease-out forwards',
 				fadeOut: 'fadeOut 0.6s ease-out forwards',
 				scaleIn: 'scaleIn 0.5s ease-out forwards',
+				float: 'float 6s ease-in-out infinite',
 			},
 		},
 	},

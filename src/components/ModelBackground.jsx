@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 
-const ModelBackground = ({ image = "/placeholder.svg" }) => {
+const ModelBackground = ({ image = "/placeholder.svg", isDarkMode = false }) => {
   const bgRef = useRef(null);
   
   useEffect(() => {
@@ -24,9 +24,9 @@ const ModelBackground = ({ image = "/placeholder.svg" }) => {
   }, []);
   
   return (
-    <div className="model-bg">
+    <div className={`model-bg ${isDarkMode ? 'dark-mode' : ''}`}>
       <div ref={bgRef} className="model-bg-inner">
-        <img src={image} alt="Background" />
+        <img src={image} alt="Background" className="w-full h-full object-cover" />
       </div>
     </div>
   );

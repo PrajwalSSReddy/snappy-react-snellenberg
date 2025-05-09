@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useMousePosition } from '../hooks/useMousePosition';
 
-const CustomCursor = () => {
+const CustomCursor = ({ isDarkMode }) => {
   const { x, y } = useMousePosition();
   const [isActive, setIsActive] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -71,12 +71,12 @@ const CustomCursor = () => {
     <>
       <div 
         ref={cursorRef}
-        className={`custom-cursor main-cursor ${isActive ? 'custom-cursor-active' : ''} ${isHovering ? 'hovering' : ''} ${isCursorVisible ? 'visible' : ''}`}
+        className={`custom-cursor main-cursor ${isActive ? 'custom-cursor-active' : ''} ${isHovering ? 'hovering' : ''} ${isCursorVisible ? 'visible' : ''} ${isDarkMode ? 'dark-mode' : ''}`}
         style={{ left: `${x}px`, top: `${y}px` }}
       />
       <div 
         ref={followerRef}
-        className={`cursor-follower ${isActive ? 'cursor-follower-active' : ''} ${isHovering ? 'hovering' : ''} ${isCursorVisible ? 'visible' : ''}`}
+        className={`cursor-follower ${isActive ? 'cursor-follower-active' : ''} ${isHovering ? 'hovering' : ''} ${isCursorVisible ? 'visible' : ''} ${isDarkMode ? 'dark-mode' : ''}`}
         style={{ left: `${x}px`, top: `${y}px` }}
       />
     </>

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 
-const MarqueeText = ({ text, speed = 0.15 }) => { // Reduced default speed
+const MarqueeText = ({ text, speed = 0.08 }) => { // Reduced speed even more
   const marqueeRef = useRef(null);
   const containerRef = useRef(null);
   
@@ -43,9 +43,9 @@ const MarqueeText = ({ text, speed = 0.15 }) => { // Reduced default speed
   }, [text, speed]);
   
   return (
-    <div className="w-full py-8 overflow-hidden marquee-wrapper bg-light" ref={containerRef}>
+    <div className="w-full py-8 overflow-hidden marquee-wrapper bg-light dark:bg-dark" ref={containerRef}>
       <div className="flex marquee-container" ref={marqueeRef}>
-        <div className="text-5xl font-bold whitespace-nowrap px-4">{text}</div>
+        <div className="text-5xl font-bold whitespace-nowrap px-4 text-dark dark:text-light">{text}</div>
       </div>
     </div>
   );

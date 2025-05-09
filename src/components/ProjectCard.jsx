@@ -1,10 +1,14 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project }) => {
   return (
-    <Link to={`/work/${project.slug}`} className="hover-project group hover-trigger">
+    <a 
+      href={project.linkedinUrl || `https://in.linkedin.com/in/prajwalssreddy`} 
+      target="_blank" 
+      rel="noreferrer" 
+      className="hover-project group hover-trigger"
+    >
       <div className="relative overflow-hidden">
         <img
           src={project.coverImage}
@@ -16,8 +20,11 @@ const ProjectCard = ({ project }) => {
       <div className="mt-4 space-y-1">
         <h3 className="text-xl font-medium">{project.title}</h3>
         <p className="text-gray-600">{project.category}</p>
+        {project.description && (
+          <p className="text-sm text-gray-500 line-clamp-2">{project.description}</p>
+        )}
       </div>
-    </Link>
+    </a>
   );
 };
 

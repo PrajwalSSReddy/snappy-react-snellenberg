@@ -35,7 +35,7 @@ const projectsPreview = [
   }
 ];
 
-const Home = () => {
+const Home = ({ isDarkMode }) => {
   // Initialize scroll reveal effect
   useScrollReveal();
   
@@ -45,26 +45,26 @@ const Home = () => {
   return (
     <div className="min-h-screen relative">
       {/* Background Model Image */}
-      <ModelBackground image="/placeholder.svg" />
+      <ModelBackground image="/placeholder.svg" isDarkMode={isDarkMode} />
       
       {/* Hero Section - Reduced vertical padding */}
-      <section className="min-h-screen flex flex-col justify-center pt-16">
+      <section className="min-h-screen flex flex-col justify-center pt-10 pb-8">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="mb-6 reveal-left">
-            <h1 className="text-xl md:text-2xl font-medium text-gray-600 mb-2">Prajwal S S Reddy</h1>
+          <div className="mb-4 reveal-left">
+            <h1 className="text-2xl md:text-3xl font-medium text-gray-600 dark:text-gray-300 mb-2">Prajwal S S Reddy</h1>
             <AnimatedText 
               text="iOS Developer focused on crafting exceptional mobile experiences"
               className="text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl"
               delay={0.3}
-              stagger={0.02}
+              stagger={0.04} // Slowed down animation
             />
           </div>
-          <div className="mt-6 text-xl md:text-2xl text-gray-600 max-w-xl reveal-right stagger-delay-2">
+          <div className="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-xl reveal-right stagger-delay-2">
             <p>I build innovative mobile applications that combine aesthetic design with functional development.</p>
           </div>
           <Link 
             to="/work" 
-            className="inline-flex items-center mt-8 text-xl hover-trigger reveal-scale stagger-delay-3"
+            className="inline-flex items-center mt-6 text-xl hover-trigger reveal-scale stagger-delay-3"
           >
             <span className="mr-2">View my work</span>
             <ArrowRight size={20} />
@@ -72,12 +72,12 @@ const Home = () => {
         </div>
       </section>
 
-      <MarqueeText text="iOS DEVELOPER & MOBILE APP SPECIALIST" speed={0.15} />
+      <MarqueeText text="iOS DEVELOPER & MOBILE APP SPECIALIST" speed={0.08} />
       
       {/* Selected Projects Preview - Reduced vertical padding */}
-      <section className="py-16">
+      <section className="py-10">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex justify-between items-end mb-10">
+          <div className="flex justify-between items-end mb-8">
             <h2 className="text-3xl md:text-4xl font-bold reveal">Selected Works</h2>
             <Link 
               to="/work" 
@@ -88,7 +88,7 @@ const Home = () => {
             </Link>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectsPreview.map((project, index) => (
               <div 
                 key={project.id} 
@@ -106,14 +106,14 @@ const Home = () => {
                   </div>
                   <div className="mt-4 space-y-1">
                     <h3 className="text-xl font-medium">{project.title}</h3>
-                    <p className="text-gray-600">{project.category}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{project.category}</p>
                   </div>
                 </a>
               </div>
             ))}
           </div>
           
-          <div className="mt-10 text-center md:hidden">
+          <div className="mt-8 text-center md:hidden">
             <Link 
               to="/work" 
               className="inline-flex items-center hover-trigger reveal"
@@ -126,18 +126,18 @@ const Home = () => {
       </section>
       
       {/* About Preview - Reduced vertical padding */}
-      <section className="py-16 bg-accent">
+      <section className="py-10 bg-accent dark:bg-dark">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-5 reveal-left">About Me</h2>
               <div className="space-y-3 text-lg reveal-left stagger-delay-1">
-                <p>I'm an iOS Developer with expertise in Swift and mobile application development, focused on creating intuitive and responsive user experiences.</p>
+                <p>I'm Prajwal S S Reddy, an iOS Developer with expertise in Swift and mobile application development, focused on creating intuitive and responsive user experiences.</p>
                 <p>My strength lies in building robust mobile applications with clean architecture, creating seamless and intuitive interfaces for iOS platforms.</p>
               </div>
               <Link 
                 to="/about" 
-                className="inline-flex items-center mt-6 hover-trigger reveal-left stagger-delay-2"
+                className="inline-flex items-center mt-4 hover-trigger reveal-left stagger-delay-2"
               >
                 <span className="mr-2">Learn more about me</span>
                 <ArrowRight size={20} />
@@ -155,15 +155,15 @@ const Home = () => {
       </section>
       
       {/* Contact Preview - Reduced vertical padding */}
-      <section className="py-16">
+      <section className="py-10">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <AnimatedText
             text="Let's Work Together"
             className="text-3xl md:text-5xl font-bold mb-5"
             delay={0.1}
-            stagger={0.04}
+            stagger={0.04} // Slowed down animation
           />
-          <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-8 reveal stagger-delay-1">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6 reveal stagger-delay-1">
             Have a mobile app project in mind? Let's collaborate to create something exceptional.
           </p>
           <Link 

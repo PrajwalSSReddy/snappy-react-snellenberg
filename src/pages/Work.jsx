@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import ProjectCard from '../components/ProjectCard';
 
 const projects = [
   {

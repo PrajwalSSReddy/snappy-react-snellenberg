@@ -14,8 +14,31 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
 import PageTransition from "./components/PageTransition";
+import ThemeProvider, { useTheme } from "./components/ThemeProvider";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  const { isDarkMode } = useTheme();
+  
+  return (
+    <>
+      <CustomCursor isDarkMode={isDarkMode} />
+      <PageTransition />
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -23,19 +46,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <CustomCursor />
-        <PageTransition />
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
+        <ThemeProvider>
+          <AppContent />
+        </ThemeProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
