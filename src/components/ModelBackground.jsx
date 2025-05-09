@@ -9,9 +9,10 @@ const ModelBackground = ({ image = "/placeholder.svg" }) => {
       if (!bgRef.current) return;
       
       const { clientX, clientY } = event;
-      const xPos = (clientX / window.innerWidth - 0.5) * 10; // -5 to 5
-      const yPos = (clientY / window.innerHeight - 0.5) * 10; // -5 to 5
+      const xPos = (clientX / window.innerWidth - 0.5) * 8; // Reduced movement range
+      const yPos = (clientY / window.innerHeight - 0.5) * 8; // Reduced movement range
       
+      // Using more gentle transitions
       bgRef.current.style.transform = `translate(${xPos}px, ${yPos}px)`;
     };
     

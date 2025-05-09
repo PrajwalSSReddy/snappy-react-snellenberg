@@ -2,128 +2,162 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import MarqueeText from '../components/MarqueeText';
+import { ArrowRight } from 'lucide-react';
 
 const About = () => {
   // Initialize scroll reveal effect
   useScrollReveal();
   
   return (
-    <div className="min-h-screen pt-24 pb-20">
+    <div className="min-h-screen pt-20 pb-16">
       <div className="container mx-auto px-4 md:px-6">
         {/* Hero Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
           <div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 reveal">About Me</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-5 reveal">About Me</h1>
             <p className="text-xl text-gray-600 max-w-lg reveal stagger-delay-1">
-              Creative Developer & Designer specializing in crafting engaging digital experiences.
+              iOS Developer specialized in crafting engaging mobile experiences with Swift and UIKit.
             </p>
           </div>
           <div className="reveal stagger-delay-2">
             <img 
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1740&auto=format&fit=crop" 
-              alt="Your Name" 
+              alt="Prajwal S S Reddy" 
               className="w-full rounded-lg"
             />
           </div>
         </div>
         
         {/* Bio Section */}
-        <section className="mb-24">
+        <section className="mb-16">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-bold mb-6 reveal">My Story</h2>
+            <h2 className="text-3xl font-bold mb-5 reveal">My Story</h2>
             <div className="space-y-4 text-lg reveal stagger-delay-1">
               <p>
-                I'm a creative developer with over 5 years experience in designing and building digital products. My passion lies in creating beautiful, functional, and accessible digital experiences.
+                I'm Prajwal S S Reddy, an iOS Developer with a passion for creating elegant, user-friendly mobile applications. My journey in mobile development began during my education, and I've since refined my skills in Swift, UIKit, and the broader Apple ecosystem.
               </p>
               <p>
-                My journey began in graphic design before transitioning into web development, giving me a unique perspective that bridges the gap between visual aesthetics and technical implementation.
+                With expertise in the entire iOS development lifecycle, I specialize in building applications with clean architecture, intuitive interfaces, and robust performance. I've worked on various projects ranging from CRM systems to dating applications, always focusing on delivering exceptional user experiences.
               </p>
               <p>
-                I'm deeply invested in the intersection of design and technology, constantly exploring new ways to push the boundaries of what's possible on the web.
+                I'm deeply interested in the evolution of mobile technology and continuously seek to expand my knowledge and skills in the field. My approach combines technical excellence with creative problem-solving to build applications that not only look great but function seamlessly.
               </p>
+            </div>
+            <div className="mt-6">
+              <a 
+                href="https://in.linkedin.com/in/prajwalssreddy" 
+                target="_blank" 
+                rel="noreferrer"
+                className="inline-flex items-center hover-trigger reveal"
+              >
+                <span className="mr-2">Connect on LinkedIn</span>
+                <ArrowRight size={20} />
+              </a>
             </div>
           </div>
         </section>
         
-        <MarqueeText text="DESIGN & DEVELOPMENT" />
+        <MarqueeText text="iOS DEVELOPMENT & MOBILE DESIGN" speed={0.15} />
+        
+        {/* Education Section */}
+        <section className="py-16">
+          <h2 className="text-3xl font-bold mb-10 reveal">Education</h2>
+          
+          <div className="space-y-10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 reveal stagger-delay-1">
+              <div className="md:col-span-1">
+                <span className="text-gray-500">2017 - 2021</span>
+              </div>
+              <div className="md:col-span-3">
+                <h3 className="text-xl font-bold">Bachelor of Technology</h3>
+                <p className="text-gray-600 mt-1">Computer Science & Engineering</p>
+                <p className="text-gray-500 mt-1">Visvesvaraya Technological University</p>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 reveal stagger-delay-2">
+              <div className="md:col-span-1">
+                <span className="text-gray-500">2015 - 2017</span>
+              </div>
+              <div className="md:col-span-3">
+                <h3 className="text-xl font-bold">Pre-University Education</h3>
+                <p className="text-gray-600 mt-1">Science Stream with Computer Science</p>
+                <p className="text-gray-500 mt-1">Karnataka Pre-University Board</p>
+              </div>
+            </div>
+          </div>
+        </section>
         
         {/* Skills Section */}
-        <section className="py-20">
-          <h2 className="text-3xl font-bold mb-12 reveal">My Skills</h2>
+        <section className="py-16">
+          <h2 className="text-3xl font-bold mb-10 reveal">My Skills</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div className="reveal stagger-delay-1">
-              <h3 className="text-xl font-bold mb-4">Design</h3>
+              <h3 className="text-xl font-bold mb-4">Development</h3>
               <ul className="space-y-2 text-gray-600">
-                <li>User Experience Design</li>
-                <li>User Interface Design</li>
-                <li>Interaction Design</li>
-                <li>Wireframing & Prototyping</li>
-                <li>Brand Identity</li>
+                <li>Swift</li>
+                <li>Objective-C</li>
+                <li>UIKit</li>
+                <li>SwiftUI</li>
+                <li>Core Data</li>
+                <li>RESTful APIs</li>
               </ul>
             </div>
             
             <div className="reveal stagger-delay-2">
-              <h3 className="text-xl font-bold mb-4">Development</h3>
+              <h3 className="text-xl font-bold mb-4">Tools & Frameworks</h3>
               <ul className="space-y-2 text-gray-600">
-                <li>HTML, CSS, JavaScript</li>
-                <li>React.js</li>
-                <li>Next.js</li>
-                <li>Tailwind CSS</li>
-                <li>Responsive Web Design</li>
+                <li>Xcode</li>
+                <li>CocoaPods</li>
+                <li>Firebase</li>
+                <li>Realm</li>
+                <li>Git & GitHub</li>
+                <li>Fastlane</li>
               </ul>
             </div>
             
             <div className="reveal stagger-delay-3">
-              <h3 className="text-xl font-bold mb-4">Tools</h3>
+              <h3 className="text-xl font-bold mb-4">Design & Other</h3>
               <ul className="space-y-2 text-gray-600">
-                <li>Figma</li>
-                <li>Adobe Creative Suite</li>
-                <li>VS Code</li>
-                <li>Git & GitHub</li>
-                <li>Notion</li>
+                <li>UI/UX Design for Mobile</li>
+                <li>App Store Optimization</li>
+                <li>Agile Development</li>
+                <li>REST API Design</li>
+                <li>Sketch & Figma</li>
+                <li>Jira & Confluence</li>
               </ul>
             </div>
           </div>
         </section>
         
         {/* Experience Section */}
-        <section className="py-20">
-          <h2 className="text-3xl font-bold mb-12 reveal">Experience</h2>
+        <section className="py-16">
+          <h2 className="text-3xl font-bold mb-10 reveal">Experience</h2>
           
-          <div className="space-y-12">
+          <div className="space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 reveal stagger-delay-1">
               <div className="md:col-span-1">
                 <span className="text-gray-500">2021 - Present</span>
               </div>
               <div className="md:col-span-3">
-                <h3 className="text-xl font-bold">Freelance Designer & Developer</h3>
-                <p className="text-gray-600 mt-2">
-                  Working with clients globally to design and develop websites, applications, and digital products.
+                <h3 className="text-xl font-bold">iOS Developer</h3>
+                <p className="text-gray-600 mt-1">Tech Solutions Inc.</p>
+                <p className="text-gray-500 mt-2">
+                  Developing and maintaining iOS applications for various clients. Leading mobile projects from concept to App Store release. Implementing clean architecture and modern Swift practices.
                 </p>
               </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 reveal stagger-delay-2">
               <div className="md:col-span-1">
-                <span className="text-gray-500">2019 - 2021</span>
+                <span className="text-gray-500">2020 - 2021</span>
               </div>
               <div className="md:col-span-3">
-                <h3 className="text-xl font-bold">UX Designer at Design Agency</h3>
-                <p className="text-gray-600 mt-2">
-                  Led the design process for various client projects, creating wireframes, prototypes, and final designs for websites and applications.
-                </p>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 reveal stagger-delay-3">
-              <div className="md:col-span-1">
-                <span className="text-gray-500">2017 - 2019</span>
-              </div>
-              <div className="md:col-span-3">
-                <h3 className="text-xl font-bold">Web Developer at Tech Company</h3>
-                <p className="text-gray-600 mt-2">
-                  Developed and maintained websites and web applications using modern front-end technologies.
+                <h3 className="text-xl font-bold">iOS Development Intern</h3>
+                <p className="text-gray-600 mt-1">Mobile App Studio</p>
+                <p className="text-gray-500 mt-2">
+                  Assisted in the development of iOS applications. Gained hands-on experience with Swift, UIKit, and CoreData. Participated in code reviews and agile development processes.
                 </p>
               </div>
             </div>

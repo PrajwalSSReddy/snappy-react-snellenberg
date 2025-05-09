@@ -1,55 +1,51 @@
 
 import React, { useEffect, useRef } from 'react';
 
-const MarqueeText = ({ text, speed = 0.5 }) => {
+const MarqueeText = ({ text, speed = 0.15 }) => { // Reduced default speed
+  const marqueeRef = useRef(null);
   const containerRef = useRef(null);
-  const contentRef = useRef(null);
   
   useEffect(() => {
-    const container = containerRef.current;
-    const content = contentRef.current;
+    if (!marqueeRef.current || !containerRef.current) return;
     
-    if (!container || !content) return;
+    const marqueeContainer = marqueeRef.current;
+    const marqueeContent = marqueeContainer.children[0];
+    const marqueeWidth = marqueeContent.offsetWidth;
     
-    // Clone the content for a seamless loop
-    const clone = content.cloneNode(true);
-    container.appendChild(clone);
+    // Clone the content enough times to fill the view
+    const cloneCount = Math.ceil(window.innerWidth / marqueeWidth) + 1;
     
-    let animationFrame;
-    let scrollPosition = 0;
+    for (let i = 0; i < cloneCount; i++) {
+      const clone = marqueeContent.cloneNode(true);
+      marqueeContainer.appendChild(clone);
+    }
+    
+    let animFrame;
+    let position = 0;
     
     const animate = () => {
-      scrollPosition += speed;
+      position -= speed;
       
-      // Reset position for seamless loop
-      if (scrollPosition >= content.offsetWidth) {
-        scrollPosition = 0;
+      // Reset position when first element is out of view
+      if (position <= -marqueeWidth) {
+        position = 0;
       }
       
-      container.style.transform = `translateX(-${scrollPosition}px)`;
-      animationFrame = requestAnimationFrame(animate);
+      marqueeContainer.style.transform = `translateX(${position}px)`;
+      animFrame = requestAnimationFrame(animate);
     };
     
-    animationFrame = requestAnimationFrame(animate);
+    animate();
     
     return () => {
-      cancelAnimationFrame(animationFrame);
+      cancelAnimationFrame(animFrame);
     };
-  }, [speed]);
+  }, [text, speed]);
   
   return (
-    <div className="marquee-wrapper overflow-hidden whitespace-nowrap w-full my-12 py-6 border-y border-gray-200">
-      <div 
-        ref={containerRef}
-        className="marquee-container inline-block"
-      >
-        <div ref={contentRef} className="inline-block">
-          {Array(5).fill(text).map((item, index) => (
-            <span key={index} className="text-5xl md:text-7xl font-bold mx-8">
-              {item}
-            </span>
-          ))}
-        </div>
+    <div className="w-full py-8 overflow-hidden marquee-wrapper bg-light" ref={containerRef}>
+      <div className="flex marquee-container" ref={marqueeRef}>
+        <div className="text-5xl font-bold whitespace-nowrap px-4">{text}</div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 
-const AnimatedText = ({ text, className = "", delay = 0, stagger = 0.03 }) => {
+const AnimatedText = ({ text, className = "", delay = 0, stagger = 0.02 }) => {
   const textRef = useRef(null);
   
   useEffect(() => {
@@ -25,10 +25,14 @@ const AnimatedText = ({ text, className = "", delay = 0, stagger = 0.03 }) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const chars = element.querySelectorAll('.char-reveal');
-          chars.forEach(char => {
-            char.classList.add('visible');
-          });
+          setTimeout(() => {
+            const chars = element.querySelectorAll('.char-reveal');
+            chars.forEach((char, index) => {
+              setTimeout(() => {
+                char.classList.add('visible');
+              }, index * (stagger * 1000)); // Convert stagger to milliseconds
+            });
+          }, delay * 1000); // Convert delay to milliseconds
           observer.unobserve(entry.target);
         }
       });
